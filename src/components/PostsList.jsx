@@ -4,7 +4,7 @@ import NewPost from './NewPost';
 import Modal from './Modal';
 import LoadingSpinner from './LoadingSpinner';
 
-const BACKEND_URL = "https://react-sample-backend-beryl.vercel.app";
+const BACKEND_URL = "https://react-sample-backend-green.vercel.app";
 
 function PostsList({ isPosting, onStopPosting }) {
 	const [posts, setPosts] = useState([]);
