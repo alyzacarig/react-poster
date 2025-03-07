@@ -14,20 +14,28 @@ function PostsList({ isPosting, onStopPosting }) {
 	// Fetch posts from backend
 	const fetchPosts = useCallback(async () => {
 		try {
-			setLoading(true);
-			setError(null);
-
-			const response = await fetch(`${BACKEND_URL}/posts`);
-			if (!response.ok) throw new Error('Failed to fetch posts.');
-
-			const resData = await response.json();
-			setPosts(resData.posts);
+		  setLoading(true);
+		  setError(null);
+	  
+		  console.log("Fetching posts from:", `${BACKEND_URL}/posts`);
+	  
+		  const response = await fetch(`${BACKEND_URL}/posts`);
+		  console.log("Response status:", response.status);
+	  
+		  if (!response.ok) throw new Error('Failed to fetch posts.');
+	  
+		  const resData = await response.json();
+		  console.log("Fetched posts:", resData);
+		  
+		  setPosts(resData.posts);
 		} catch (err) {
-			setError(err.message);
+		  console.error("Fetch error:", err);
+		  setError(err.message);
 		} finally {
-			setLoading(false);
+		  setLoading(false);
 		}
-	}, []);
+	  }, []);
+	  
 
 	// Fetch posts when the component loads
 	useEffect(() => {
