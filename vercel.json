@@ -1,0 +1,13 @@
+{
+    "build": {
+      "command": "npm run build",
+      "outputDirectory": "dist"
+    },
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "https://react-sample-backend-beryl.vercel.app/api/$1"
+      }
+    ]
+  }
+  
