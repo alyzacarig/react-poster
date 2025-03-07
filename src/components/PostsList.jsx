@@ -4,6 +4,8 @@ import NewPost from './NewPost';
 import Modal from './Modal';
 import LoadingSpinner from './LoadingSpinner';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 function PostsList({ isPosting, onStopPosting }) {
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ function PostsList({ isPosting, onStopPosting }) {
 			setLoading(true);
 			setError(null);
 
-			const response = await fetch('http://localhost:8080/posts');
+			const response = await fetch(`${BACKEND_URL}/posts`);
 			if (!response.ok) throw new Error('Failed to fetch posts.');
 
 			const resData = await response.json();
@@ -36,7 +38,7 @@ function PostsList({ isPosting, onStopPosting }) {
 	async function addPostHandler(postData) {
 		try {
 			setLoading(true);
-			const response = await fetch('http://localhost:8080/posts', {
+			const response = await fetch(`${BACKEND_URL}/posts`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(postData),
@@ -55,7 +57,7 @@ function PostsList({ isPosting, onStopPosting }) {
 	// Edit post
 	async function editPostHandler(postId, updatedBody) {
 		try {
-			const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+			const response = await fetch(`${BACKEND_URL}/posts/${postId}`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ body: updatedBody }),
@@ -72,7 +74,7 @@ function PostsList({ isPosting, onStopPosting }) {
 	// Delete post
 	async function deletePostHandler(postId) {
 		try {
-			const response = await fetch(`http://localhost:8080/posts/${postId}`, {
+			const response = await fetch(`${BACKEND_URL}/posts/${postId}`, {
 				method: 'DELETE',
 			});
 
