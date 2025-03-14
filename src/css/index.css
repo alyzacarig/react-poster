@@ -8,13 +8,14 @@
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
-	background-image: radial-gradient(ellipse at top left, #7f50e4, #4c05d0);
+	background-image: radial-gradient(ellipse at top left, #f5e6dc, #d8c3a5);
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
 }
+
 
 body {
 	margin: 0;
@@ -65,8 +66,10 @@ body {
 	display: flex;
 	gap: 1.5rem;
 	align-items: center;
-	color: #ece1fa;
+	color: #000 !important; /* Change color to black */
+	font-weight: bold;
 }
+
 
 .button {
 	display: inline-flex;
